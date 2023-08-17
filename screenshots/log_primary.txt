@@ -1,0 +1,48 @@
+[ec2-user@ip-10-1-11-174 ~]$ mysql -h primarydb.cofpottyickx.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 33
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+5 rows in set (0.00 sec)
+
+MySQL [(none)]> USE udacity;
+Database changed
+MySQL [udacity]> SHOW TABLES;
+Empty set (0.00 sec)
+
+MySQL [udacity]> CREATE TABLE student (lastName VARCHAR(20), firstName VARCHAR(20), major VARCHAR(20), bDay DATE);
+Query OK, 0 rows affected (0.04 sec)
+
+MySQL [udacity]> SHOW TABLES;
++-------------------+
+| Tables_in_udacity |
++-------------------+
+| student           |
++-------------------+
+1 row in set (0.00 sec)
+
+MySQL [udacity]> INSERT INTO student VALUES ('Duck', 'Donald', 'Dance', '1934-06-09');
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [udacity]> SELECT * FROM student;
++----------+-----------+-------+------------+
+| lastName | firstName | major | bDay       |
++----------+-----------+-------+------------+
+| Duck     | Donald    | Dance | 1934-06-09 |
++----------+-----------+-------+------------+
+1 row in set (0.00 sec)
